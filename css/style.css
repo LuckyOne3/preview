@@ -1,0 +1,20 @@
+.time{
+    min-width: 250px;
+}
+.delete{
+
+    position: absolute;
+    cursor: pointer;
+    top:5px;
+    right: -70px;
+
+}
+.delete img {
+
+
+    height: 50px;
+
+}
+.relative{
+    position: relative;
+}
