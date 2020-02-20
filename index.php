@@ -87,8 +87,9 @@
 
 
         (function time(){
+            var date = moment().format('YYYY-MM-DD H:mm:ss');
 
-            $('.time').text(moment().format('YYYY-MM-DD hh:mm:ss'));
+            $('.time').text(date);
 
             var innerTimephp = $('.timephp').text();
 

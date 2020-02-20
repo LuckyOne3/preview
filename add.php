@@ -1,6 +1,6 @@
-<? if (isset($_POST['id']))
+<? if (isset($_POST))
 {
-    $id = (int) $_POST['id'];
+
     ?>
 
     <?php require "db.php" ?>

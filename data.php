@@ -2,6 +2,7 @@
 
 
 
+
 <div class="container">
     <h2 class="text-center mt-0">Информация о времени создания и удалении виртуальных серверов</h2>
     <hr class="divider my-4">
@@ -106,7 +107,7 @@
                         if ($selectedForRemove != '+') {
 
                             ?>
-                            <div class="delete" data-id="<?php echo $server['id']; ?>"><button type="button" class="btn btn-outline-primary add">Remove</button></div>
+                            <div class="delete" id="delete" data-id="<?php echo $server['id']; ?>"><button type="button" class="btn btn-outline-primary add">Remove</button></div>
                             <?php
                         }
 
@@ -126,7 +127,7 @@
         </tbody>
     </table>
 
-    <button type="button" class="btn btn-outline-primary add">Add</button>
+    <button type="button" class="btn btn-outline-primary add" id="add">Add</button>
 </div>
 
 <div style="display: none"  class="timephp"><?php
@@ -145,13 +146,13 @@
 <script>
 
     //при клике на кнопку
-    $(".delete").click(
+    $("#delete").click(
 
         function() {
             var id = $(this).attr('data-id');
             $('.timeDelete[data-id="'+id+'"]').text('+');
 
-
+            alert("Сервер будет удален через 3 минуты");
 
 //отправляем ( куда , что (имя / значение) , получаем ответ)
             $.post('delete.php',
@@ -164,13 +165,13 @@
 
     );
 
-    $(".add").click(
+    $("#add").click(
 
         function() {
+            alert("Сервер будет добавлен через 5 минут");
 
 //отправляем ( куда , что (имя / значение) , получаем ответ)
-            $.post('add.php',
-                { id: 'add' }
+            $.post('add.php'
                 , function(data) {
 
 
