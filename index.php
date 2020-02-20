@@ -64,6 +64,8 @@
 
     function show()
     {
+
+
         $.ajax({
             url: "data.php",
             cache: false,
@@ -73,10 +75,13 @@
         });
 
 
+
+
     }
 
     $(document).ready(function(){
         show();
+
         setInterval('show()',10000);
     });
 
@@ -86,85 +91,100 @@
 
 
 
+
+
         (function time(){
             var date = moment().format('YYYY-MM-DD H:mm:ss');
 
             $('.time').text(date);
 
+            var ise = $('.timephp').attr('data-is');
+            var iseid = $('.timephp').attr('data-id');
+
             var innerTimephp = $('.timephp').text();
 
 
+            var datephp = moment(innerTimephp);
 
-            if(innerTimephp === '0' || !innerTimephp)
+            if(ise === '1')
             {
-                $('.timejs').text('00:00:00');
-            }
-            else{
-                var datephp = moment(innerTimephp);
-
 
                 var a = moment();
-                var b = datephp;
-                var d = a.diff(b, 'days')%31;
-
-                var m = a.diff(b, 'months')%12;
-                var y = a.diff(b, 'years');
-                var h = a.diff(b, 'hours')%24;
-                var mm = a.diff(b, 'minutes')%60;
-                var s = a.diff(b, 'seconds')%60;
-
-                if (d < 10)
-                {
-                    d = '0'+ d;
-                }
-                if (m < 10)
-                {
-                    m = '0'+ m;
-                }
-                if (s < 10)
-                {
-                    s = '0'+ s;
-                }
-                if (h < 10)
-                {
-                    h = '0'+ h;
-                }
 
 
-                if (y < 10)
-                {
-                    y = '000'+ y;
-                }
-                else if (y < 100)
-                {
-                    y = '00'+ y;
-                }
-                else if (y < 1000)
-                {
-                    y = '0'+ y;
-                }
+            }
+            else{
 
-                if (mm < 10)
-                {
-                    mm = '0'+ mm;
-                }
+
+                var isetime = $('td[data-id=' + iseid + ']').text();
 
 
 
-
-                var res = y+'-'+ m+ '-'+ d + ' '+ h+ ':'+ mm+ ':'+ s;
-                $('.timejs').text(res);
-
-
-
-
-
-
-
+                var a = moment(isetime);
 
 
 
             }
+
+            var b = datephp;
+
+       
+
+            var d = a.diff(b, 'days')%31;
+
+
+
+
+            var m = a.diff(b, 'months')%12;
+
+            var y = a.diff(b, 'years');
+            var h = a.diff(b, 'hours')%24;
+            var mm = a.diff(b, 'minutes')%60;
+            var s = a.diff(b, 'seconds')%60;
+
+            if (d < 10)
+            {
+                d = '0'+ d;
+            }
+            if (m < 10)
+            {
+                m = '0'+ m;
+            }
+            if (s < 10)
+            {
+                s = '0'+ s;
+            }
+            if (h < 10)
+            {
+                h = '0'+ h;
+            }
+
+
+            if (y < 10)
+            {
+                y = '000'+ y;
+            }
+            else if (y < 100)
+            {
+                y = '00'+ y;
+            }
+            else if (y < 1000)
+            {
+                y = '0'+ y;
+            }
+
+            if (mm < 10)
+            {
+                mm = '0'+ mm;
+            }
+
+
+
+
+            var res = y+'-'+ m+ '-'+ d + ' '+ h+ ':'+ mm+ ':'+ s;
+            $('.timejs').text(res);
+
+
 
 
 

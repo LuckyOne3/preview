@@ -38,23 +38,48 @@
 
 
         $datetime1 = date("Y-m-d H:i:s");
+        $datetime3 = date("Y-m-d H:i:s");
 
 
 
+        $isstd = 0;
 
 
         while($server = mysqli_fetch_assoc($servers)) {
             $result = 0;
+            $resultminus = 0;
 
-            if ($server['SelectedForRemove'] !== '+') {
+
+
+            if ($server['SelectedForRemove'] !== '+' ) {
 
 
                 $datetime2 = date($server['CreateDateTime']);
                 $result = $datetime1 > $datetime2;
+                $isstd = 1;
                 if ($result == 1) {
                     $datetime1 = $datetime2;
 
                 }
+                else{
+                    $isstd = 0;
+                }
+
+            }
+            else{
+
+
+                $datetime2 = date($server['CreateDateTime']);
+
+                $resultminus = $datetime3 > $datetime2;
+
+                if ($resultminus == 1) {
+                    $datetime3 = $datetime2;
+                    $isid = date($server['id']);
+
+                }
+
+
             }
 
 
@@ -97,7 +122,7 @@
 
                     <th scope="row"><?php echo $server['id']; ?></th>
                     <td><?php echo $server['CreateDateTime']; ?></td>
-                    <td> <?php echo $RemoveDateTime; ?></td>
+                    <td data-id="<?php echo $server['id']; ?>"> <?php echo $RemoveDateTime; ?></td>
                     <td class="relative timeDelete" data-id="<?php echo $server['id']; ?>"><?php
                         if ($fl == 0) {
                             echo $selectedForRemove;
@@ -129,21 +154,44 @@
 
     <button type="button" class="btn btn-outline-primary add" id="add">Add</button>
 </div>
+<?php
+if($isstd !== 1)
+{
+    $datetime1 = $datetime3;
+}
 
-<div style="display: none"  class="timephp"><?php
-    if($datetime1 == date("Y-m-d H:i:s"))
-    {
-        $datetime1 = 0;
-    }
-    else{
-        echo $datetime1;
-    }
+
+?>
+
+<div style="display: none"  class="timephp" data-id="<?php echo $isid;?>"  data-is="<?php echo $isstd;?>"><?php
+   echo $datetime1;
+
    ?>
 </div>
 
 <div  class="elipsed"></div>
 
 <script>
+
+
+    $(document).ready(function(){
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    });
+
 
     //при клике на кнопку
     $(".delete").click(
