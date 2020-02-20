@@ -107,7 +107,7 @@
                         if ($selectedForRemove != '+') {
 
                             ?>
-                            <div class="delete" id="delete" data-id="<?php echo $server['id']; ?>"><button type="button" class="btn btn-outline-primary add">Remove</button></div>
+                            <div  ><button type="button" class="btn btn-outline-primary delete" data-id="<?php echo $server['id']; ?>">Remove</button></div>
                             <?php
                         }
 
@@ -146,9 +146,9 @@
 <script>
 
     //при клике на кнопку
-    $("#delete").click(
+    $(".delete").click(
 
-        function() {
+        function () {
             var id = $(this).attr('data-id');
             $('.timeDelete[data-id="'+id+'"]').text('+');
 
@@ -157,7 +157,7 @@
 //отправляем ( куда , что (имя / значение) , получаем ответ)
             $.post('delete.php',
                 { id: id }
-                , function(data) {
+                , function (data) {
 
 
             }  );
@@ -165,14 +165,16 @@
 
     );
 
-    $("#add").click(
 
-        function() {
+
+    $(".add").click(
+
+        function () {
             alert("Сервер будет добавлен через 5 минут");
 
 //отправляем ( куда , что (имя / значение) , получаем ответ)
             $.post('add.php'
-                , function(data) {
+                , function (data) {
 
 
                 }  );

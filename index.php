@@ -65,7 +65,7 @@
     function show()
     {
         $.ajax({
-            url: "data.php?<?php echo time()?>",
+            url: "data.php",
             cache: false,
             success: function(html){
                 $(".page-section").html(html);
