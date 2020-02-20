@@ -61,9 +61,7 @@
                     $datetime1 = $datetime2;
 
                 }
-                else{
-                    $isstd = 0;
-                }
+                
 
             }
             else{
