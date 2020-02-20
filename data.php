@@ -56,9 +56,10 @@
 
                 $datetime2 = date($server['CreateDateTime']);
                 $result = $datetime1 > $datetime2;
-                $isstd = 1;
+              
                 if ($result == 1) {
                     $datetime1 = $datetime2;
+                      $isstd = 1;
 
                 }
                 
